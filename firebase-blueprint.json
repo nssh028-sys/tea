@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Tea category (e.g., Pure Tea, Milk Tea)",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Category name" },
+        "order": { "type": "number", "description": "Display order" }
+      },
+      "required": ["name", "order"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A tea drink product",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Product name" },
+        "price": { "type": "number", "description": "Base price" },
+        "categoryId": { "type": "string", "description": "ID of the category" },
+        "description": { "type": "string", "description": "Short description" },
+        "image": { "type": "string", "description": "Image URL" },
+        "available": { "type": "boolean", "description": "Stock status" }
+      },
+      "required": ["name", "price", "categoryId"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productId": { "type": "string" },
+              "name": { "type": "string" },
+              "price": { "type": "number" },
+              "sugar": { "type": "string" },
+              "ice": { "type": "string" },
+              "quantity": { "type": "number" }
+            }
+          }
+        },
+        "total": { "type": "number" },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "preparing", "completed", "cancelled"]
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["items", "total", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "categories": {
+      "schema": "Category",
+      "description": "Collections of tea categories"
+    },
+    "products": {
+      "schema": "Product",
+      "description": "Collections of tea products"
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Collections of customer orders"
+    }
+  }
+}
