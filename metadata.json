@@ -1,0 +1,6 @@
+{
+  "name": "TeaOrder 茗茶點單系統",
+  "description": "一個專業的茶飲點單系統，包含前台顧客訂購介面與隨時掌握訂單狀態的後台管理系統。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
